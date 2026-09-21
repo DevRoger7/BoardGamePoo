@@ -6,9 +6,6 @@ package jogoTabuleiro;
 public class Main {
 
     public static void main(String[] args) {
-        // TODO: menu para escolher jogadores (nome, cor, tipo),
-        // validando pelo menos dois tipos diferentes entre eles;
-        // perguntar se o modo debug deve ser ativado;
-        // instanciar Tabuleiro e Jogo; chamar jogo.iniciar()
+        new Menu().exibir();
     }
 }
