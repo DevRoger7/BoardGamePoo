@@ -15,7 +15,6 @@ public class Dado {
      * @return valor aleatório entre 1 e 6 (inclusive)
      */
     public int rolar() {
-        // TODO: retornar valor aleatório entre 1 e 6
-        return 0;
+        return random.nextInt(6) + 1;
     }
 }
