@@ -12,7 +12,7 @@ public class JogadorSortudo extends Jogador {
     @Override
     public Lance rolarDados(Dado dado) {
         while(Lance.soma() < 7){
-            return Lan
+
         }
     }
 }
