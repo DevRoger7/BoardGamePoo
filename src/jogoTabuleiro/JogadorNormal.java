@@ -11,7 +11,6 @@ public class JogadorNormal extends Jogador {
 
     @Override
     public Lance rolarDados(Dado dado) {
-        // TODO: soma livre, sem restrição
-        return null;
+        return new Lance(dado.rolar(), dado.rolar());
     }
 }
