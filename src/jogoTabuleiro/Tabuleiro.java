@@ -78,14 +78,14 @@ public class Tabuleiro {
     private static final int[] COR_NUMERO_RGB = {75, 90, 82};
     private static final int[] COR_VAZIA_RGB = {48, 54, 61};
 
-    private static final String RESET = "[0m";
-    private static final String NEGRITO = "[1m";
+    private static final String RESET = "\u001B[0m";
+    private static final String NEGRITO = "\u001B[1m";
     // O console "Run" da IntelliJ nao interpreta o codigo ANSI de limpar tela
-    // ([2J[H) — so as cores. Por isso, em vez de tentar limpar de
+    // ([2J[H) — so as cores. Por isso, em vez de tentar limpar de
     // verdade, empurramos o quadro anterior pra fora da area visivel com
     // linhas em branco: funciona em qualquer console, IDE ou terminal real.
     private static final String LIMPAR_TELA = "\n".repeat(60);
-    private static final Pattern ANSI = Pattern.compile("\\[[0-9;]*m");
+    private static final Pattern ANSI = Pattern.compile("\u001B\\[[0-9;]*m");
 
     /** Limpa a tela e redesenha a grade de referência + status da rodada, tudo dentro de uma moldura só. */
     public void imprimirTela(List<Jogador> jogadores, int rodada, Jogador daVez, String ultimoEvento) {
@@ -290,6 +290,6 @@ public class Tabuleiro {
     }
 
     private static String cor(int r, int g, int b) {
-        return "[38;2;" + r + ";" + g + ";" + b + "m";
+        return "\u001B[38;2;" + r + ";" + g + ";" + b + "m";
     }
 }
