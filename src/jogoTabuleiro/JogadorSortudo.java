@@ -11,6 +11,10 @@ public class JogadorSortudo extends Jogador {
 
     @Override
     public Lance rolarDados(Dado dado) {
-        return null;
+        Lance lance;
+        do {
+            lance = new Lance(dado.rolar(), dado.rolar());
+        } while (lance.soma() < 7);
+        return lance;
     }
 }
