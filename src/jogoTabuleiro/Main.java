@@ -10,5 +10,7 @@ public class Main {
         // validando pelo menos dois tipos diferentes entre eles;
         // perguntar se o modo debug deve ser ativado;
         // instanciar Tabuleiro e Jogo; chamar jogo.iniciar()
+
+
     }
 }
