@@ -1,0 +1,11 @@
+model_list:
+  - model_name: "*"
+    litellm_params:
+      model: openai/nvidia/nemotron-3-ultra-550b-a55b
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+      drop_params: true
+      max_tokens: 4096
+
+general_settings:
+  disable_cost_calculator: true
