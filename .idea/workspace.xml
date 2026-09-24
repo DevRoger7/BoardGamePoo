@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9c61fce-c8a6-45cf-96bc-251757c93e22" name="Changes" comment="Implementation of `montarCasas` + creation of `CasaChegada` to check for victory conditions." />
+    <list default="true" id="b9c61fce-c8a6-45cf-96bc-251757c93e22" name="Changes" comment=".">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -85,6 +87,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="implementação do jogador azarado" />
     <MESSAGE value="Implementation of `montarCasas` + creation of `CasaChegada` to check for victory conditions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementation of `montarCasas` + creation of `CasaChegada` to check for victory conditions." />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>
