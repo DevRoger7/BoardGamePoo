@@ -79,4 +79,8 @@ public class Jogo {
     public Scanner getScanner() {
         return scanner;
     }
+
+    public static int getCasaFinal() {
+        return CASA_FINAL;
+    }
 }
