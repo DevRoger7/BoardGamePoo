@@ -23,9 +23,42 @@ public class Tabuleiro {
      * definidas pelas regras e preenchendo as demais com {@link CasaNormal}.
      */
     private List<Casa> montarCasas() {
-        // TODO: instanciar as 40 casas, posicionando as casas especiais
-        // (10/25/38, 13, 5/15/30, 17/27, 20/35) e CasaNormal nas demais
-        return null;
+        List<Casa> lista = new ArrayList<>();
+        for (int i = 0; i < totalCasas; i++) {
+            int numeroCasa = i + 1;
+            Casa casa;
+            switch (numeroCasa) {
+                case 10:
+                case 25:
+                case 38:
+                    casa = new CasaEspera(numeroCasa);
+                    break;
+                case 13:
+                    casa = new CasaSurpresa(numeroCasa);
+                    break;
+                case 5:
+                case 15:
+                case 30:
+                    casa = new CasaSorte(numeroCasa);
+                    break;
+                case 17:
+                case 27:
+                    casa = new CasaVoltarInicio(numeroCasa);
+                    break;
+                case 20:
+                case 35:
+                    casa = new CasaMagica(numeroCasa);
+                    break;
+                case 40:
+                    casa = new CasaChegada(numeroCasa);
+                    break;
+                default:
+                    casa = new CasaNormal(numeroCasa);
+                    break;
+            }
+            lista.add(casa);
+        }
+        return lista;
     }
 
     /**
