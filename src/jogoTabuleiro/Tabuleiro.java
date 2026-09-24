@@ -2,7 +2,6 @@ package jogoTabuleiro;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * Representa o tabuleiro do jogo: um conjunto fixo de {@link Casa}s,
@@ -111,15 +110,6 @@ public class Tabuleiro {
     private static final int[] COR_NUMERO_RGB = {75, 90, 82};
     private static final int[] COR_VAZIA_RGB = {48, 54, 61};
 
-    private static final String RESET = "\u001B[0m";
-    private static final String NEGRITO = "\u001B[1m";
-    // O console "Run" da IntelliJ nao interpreta o codigo ANSI de limpar tela
-    // ([2J[H) — so as cores. Por isso, em vez de tentar limpar de
-    // verdade, empurramos o quadro anterior pra fora da area visivel com
-    // linhas em branco: funciona em qualquer console, IDE ou terminal real.
-    private static final String LIMPAR_TELA = "\n".repeat(60);
-    private static final Pattern ANSI = Pattern.compile("\u001B\\[[0-9;]*m");
-
     /** Limpa a tela e redesenha a grade de referência + status da rodada, tudo dentro de uma moldura só. */
     public void imprimirTela(List<Jogador> jogadores, int rodada, Jogador daVez, String ultimoEvento) {
         List<String> linhas = new ArrayList<>();
@@ -131,29 +121,7 @@ public class Tabuleiro {
         linhas.add("");
         linhas.add(ultimoEvento);
 
-        imprimirMoldura(linhas);
-    }
-
-    private void imprimirMoldura(List<String> linhas) {
-        int largura = 0;
-        for (String linha : linhas) {
-            largura = Math.max(largura, tamanhoVisivel(linha));
-        }
-
-        StringBuilder saida = new StringBuilder();
-        saida.append(LIMPAR_TELA);
-        saida.append("┌").append("─".repeat(largura + 2)).append("┐\n");
-        for (String linha : linhas) {
-            int espacos = largura - tamanhoVisivel(linha);
-            saida.append("│ ").append(linha).append(" ".repeat(espacos)).append(" │\n");
-        }
-        saida.append("└").append("─".repeat(largura + 2)).append("┘");
-
-        System.out.println(saida);
-    }
-
-    private static int tamanhoVisivel(String linha) {
-        return ANSI.matcher(linha).replaceAll("").length();
+        ConsoleUI.imprimirMoldura(linhas);
     }
 
     // ---- grade de referência (estática, sem jogadores) ----
@@ -166,7 +134,7 @@ public class Tabuleiro {
             linhas.addAll(construirBlocoReferencia(ordem, inicio, fim));
         }
         linhas.add("");
-        linhas.add(NEGRITO + "Legenda das casas:" + RESET);
+        linhas.add(ConsoleUI.NEGRITO + "Legenda das casas:" + ConsoleUI.RESET);
         linhas.add(
                 simboloLegenda(TipoCasaVisual.SORTE) + " Sorte    "
                         + simboloLegenda(TipoCasaVisual.PERDE_VEZ) + " Perde a vez    "
@@ -206,28 +174,28 @@ public class Tabuleiro {
         for (int i = inicio; i < fim; i++) {
             int numero = ordem[i];
             TipoCasaVisual tipo = tipoDaCasa(numero);
-            String corBorda = cor(tipo.r, tipo.g, tipo.b);
+            String corBorda = ConsoleUI.cor(tipo.r, tipo.g, tipo.b);
 
-            linhaTopo.append(corBorda).append("┌").append(RESET)
-                    .append(cor(COR_NUMERO_RGB[0], COR_NUMERO_RGB[1], COR_NUMERO_RGB[2])).append(pad2(numero)).append(RESET)
-                    .append(corBorda).append("───┐").append(RESET).append(" ");
+            linhaTopo.append(corBorda).append("┌").append(ConsoleUI.RESET)
+                    .append(ConsoleUI.cor(COR_NUMERO_RGB[0], COR_NUMERO_RGB[1], COR_NUMERO_RGB[2])).append(pad2(numero)).append(ConsoleUI.RESET)
+                    .append(corBorda).append("───┐").append(ConsoleUI.RESET).append(" ");
 
-            linhaMeio.append(corBorda).append("│  ").append(RESET);
+            linhaMeio.append(corBorda).append("│  ").append(ConsoleUI.RESET);
             if (!tipo.simbolo.equals(" ")) {
-                linhaMeio.append(corBorda).append(tipo.simbolo).append(RESET);
+                linhaMeio.append(corBorda).append(tipo.simbolo).append(ConsoleUI.RESET);
             } else {
                 linhaMeio.append(" ");
             }
-            linhaMeio.append("  ").append(corBorda).append("│").append(RESET).append(" ");
+            linhaMeio.append("  ").append(corBorda).append("│").append(ConsoleUI.RESET).append(" ");
 
-            linhaBase.append(corBorda).append("└─────┘").append(RESET).append(" ");
+            linhaBase.append(corBorda).append("└─────┘").append(ConsoleUI.RESET).append(" ");
         }
 
         return List.of(linhaTopo.toString(), linhaMeio.toString(), linhaBase.toString());
     }
 
     private static String simboloLegenda(TipoCasaVisual tipo) {
-        return cor(tipo.r, tipo.g, tipo.b) + tipo.simbolo + RESET;
+        return ConsoleUI.cor(tipo.r, tipo.g, tipo.b) + tipo.simbolo + ConsoleUI.RESET;
     }
 
     // ---- status da rodada (dinâmico: barras + evento) ----
@@ -235,13 +203,13 @@ public class Tabuleiro {
     private List<String> construirLinhasStatus(int rodada, Jogador daVez, List<Jogador> jogadores) {
         List<String> linhas = new ArrayList<>();
         String corDaVez = rgbJogador(daVez.getCor());
-        linhas.add(NEGRITO + "=== RODADA " + rodada + " — vez de: " + RESET
-                + corDaVez + daVez.getNome() + RESET + NEGRITO + " ===" + RESET);
+        linhas.add(ConsoleUI.NEGRITO + "=== RODADA " + rodada + " — vez de: " + ConsoleUI.RESET
+                + corDaVez + daVez.getNome() + ConsoleUI.RESET + ConsoleUI.NEGRITO + " ===" + ConsoleUI.RESET);
         linhas.add("");
 
         StringBuilder legenda = new StringBuilder("Jogadores: ");
         for (Jogador jogador : jogadores) {
-            legenda.append(rgbJogador(jogador.getCor())).append(jogador.getNome()).append(RESET).append("   ");
+            legenda.append(rgbJogador(jogador.getCor())).append(jogador.getNome()).append(ConsoleUI.RESET).append("   ");
         }
         linhas.add(legenda.toString().stripTrailing());
         linhas.add("");
@@ -268,16 +236,16 @@ public class Tabuleiro {
     private String construirBarra(Jogador jogador) {
         String corJogador = rgbJogador(jogador.getCor());
         StringBuilder linha = new StringBuilder();
-        linha.append(corJogador).append(String.format("%-" + NOME_LARGURA + "s", jogador.getNome())).append(RESET).append("[");
+        linha.append(corJogador).append(String.format("%-" + NOME_LARGURA + "s", jogador.getNome())).append(ConsoleUI.RESET).append("[");
 
         for (int casaNum = 1; casaNum <= totalCasas; casaNum++) {
             TipoCasaVisual tipo = tipoDaCasa(casaNum);
             if (tipo != TipoCasaVisual.NORMAL) {
-                linha.append(cor(tipo.r, tipo.g, tipo.b)).append(MARCADOR_ESPECIAL).append(RESET);
+                linha.append(ConsoleUI.cor(tipo.r, tipo.g, tipo.b)).append(MARCADOR_ESPECIAL).append(ConsoleUI.RESET);
             } else if (casaNum <= jogador.getPosicao()) {
-                linha.append(corJogador).append("█").append(RESET);
+                linha.append(corJogador).append("█").append(ConsoleUI.RESET);
             } else {
-                linha.append(cor(COR_VAZIA_RGB[0], COR_VAZIA_RGB[1], COR_VAZIA_RGB[2])).append("░").append(RESET);
+                linha.append(ConsoleUI.cor(COR_VAZIA_RGB[0], COR_VAZIA_RGB[1], COR_VAZIA_RGB[2])).append("░").append(ConsoleUI.RESET);
             }
         }
 
@@ -310,19 +278,15 @@ public class Tabuleiro {
 
     private static String rgbJogador(String nomeCor) {
         return switch (nomeCor == null ? "" : nomeCor.trim().toLowerCase()) {
-            case "azul" -> cor(59, 130, 246);
-            case "verde" -> cor(34, 197, 94);
-            case "amarelo" -> cor(234, 179, 8);
-            case "roxo" -> cor(168, 85, 247);
-            default -> cor(255, 255, 255);
+            case "azul" -> ConsoleUI.cor(59, 130, 246);
+            case "verde" -> ConsoleUI.cor(34, 197, 94);
+            case "amarelo" -> ConsoleUI.cor(234, 179, 8);
+            case "roxo" -> ConsoleUI.cor(168, 85, 247);
+            default -> ConsoleUI.cor(255, 255, 255);
         };
     }
 
     private static String pad2(int numero) {
         return String.format("%02d", numero);
-    }
-
-    private static String cor(int r, int g, int b) {
-        return "\u001B[38;2;" + r + ";" + g + ";" + b + "m";
     }
 }
