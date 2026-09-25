@@ -13,7 +13,12 @@ public class CasaSorte extends Casa {
     }
 
     @Override
-    public void aplicarEfeito(Jogador jogador, Jogo jogo) {
-        // TODO: avançar CASAS_A_AVANCAR casas, exceto se o jogador for JogadorAzarado
+    public String aplicarEfeito(Jogador jogador, Jogo jogo) {
+        if (jogador.podeAproveitarSorte()) {
+            jogador.setPosicao(jogador.getPosicao() + CASAS_A_AVANCAR);
+            return jogador.getNome() + " caiu na casa da sorte e avançou "
+                    + CASAS_A_AVANCAR + " casas!";
+        }
+        return jogador.getNome() + " caiu na casa da sorte, mas é azarado demais pra aproveitar.";
     }
 }

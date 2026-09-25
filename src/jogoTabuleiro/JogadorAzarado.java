@@ -17,4 +17,9 @@ public class JogadorAzarado extends Jogador {
         }while(lance.soma()>6);
         return lance;
     }
+
+    @Override
+    public boolean podeAproveitarSorte() {
+        return false;
+    }
 }

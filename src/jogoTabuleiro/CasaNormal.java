@@ -10,7 +10,7 @@ public class CasaNormal extends Casa {
     }
 
     @Override
-    public void aplicarEfeito(Jogador jogador, Jogo jogo) {
-        // sem efeito especial
+    public String aplicarEfeito(Jogador jogador, Jogo jogo) {
+        return "";
     }
 }

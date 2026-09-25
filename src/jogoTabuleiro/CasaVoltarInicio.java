@@ -11,7 +11,8 @@ public class CasaVoltarInicio extends Casa {
     }
 
     @Override
-    public void aplicarEfeito(Jogador jogador, Jogo jogo) {
+    public String aplicarEfeito(Jogador jogador, Jogo jogo) {
         // TODO: perguntar ao jogador qual concorrente deve voltar à casa 0
+        return "";
     }
 }

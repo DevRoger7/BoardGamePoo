@@ -40,7 +40,20 @@ public class Jogo {
     private void executarTurno(Jogador jogador) {
         // TODO: pular turno se perdeProximaRodada; exibir posições;
         // obter movimento (rolarDados ou entrada manual em modoDebug);
-        // mover jogador; aplicar efeito da casa; tratar duplo (jogar de novo)
+        // mover jogador; aplicar efeito da casa (String evento = casa.aplicarEfeito(jogador, this));
+        // tabuleiro.imprimirTela(jogadores, rodada, jogador, evento); pausarParaContinuar();
+        // tratar duplo (jogar de novo)
+    }
+
+    /**
+     * Pausa a execução até o jogador pressionar Enter — dá tempo de ler o
+     * evento da rodada antes da tela ser limpa pelo próximo {@code imprimirTela}
+     * (necessário porque o jogo é pass-and-play: vários jogadores compartilham
+     * o mesmo console e cada tela é redesenhada do zero a cada turno).
+     */
+    private void pausarParaContinuar() {
+        System.out.print(" Pressione Enter para continuar...");
+        scanner.nextLine();
     }
 
     /**

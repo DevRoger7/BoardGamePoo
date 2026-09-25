@@ -27,6 +27,15 @@ public abstract class Jogador {
      */
     public abstract Lance rolarDados(Dado dado);
 
+    /**
+     * Indica se este jogador aproveita o efeito da casa da sorte.
+     * Por padrão todo jogador aproveita; {@link JogadorAzarado} sobrescreve
+     * para {@code false}, evitando checagem de tipo concreto em {@link CasaSorte}.
+     */
+    public boolean podeAproveitarSorte() {
+        return true;
+    }
+
     public String getNome() {
         return nome;
     }

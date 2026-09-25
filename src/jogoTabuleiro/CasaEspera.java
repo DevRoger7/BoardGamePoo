@@ -10,7 +10,8 @@ public class CasaEspera extends Casa {
     }
 
     @Override
-    public void aplicarEfeito(Jogador jogador, Jogo jogo) {
-        // TODO: marcar o jogador para perder a próxima rodada
+    public String aplicarEfeito(Jogador jogador, Jogo jogo) {
+        jogador.setPerdeProximaRodada(true);
+        return jogador.getNome() + " parou na casa " + getNumero() + " e perde a próxima rodada!";
     }
 }

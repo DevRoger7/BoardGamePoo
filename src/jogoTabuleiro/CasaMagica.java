@@ -11,8 +11,9 @@ public class CasaMagica extends Casa {
     }
 
     @Override
-    public void aplicarEfeito(Jogador jogador, Jogo jogo) {
+    public String aplicarEfeito(Jogador jogador, Jogo jogo) {
         // TODO: trocar de posição com o jogador mais atrás
         // (se o próprio jogador já for o último, não faz nada)
+        return "";
     }
 }

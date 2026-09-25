@@ -10,7 +10,8 @@ public class CasaChegada extends Casa {
     }
 
     @Override
-    public void aplicarEfeito(Jogador jogador, Jogo jogo) {
+    public String aplicarEfeito(Jogador jogador, Jogo jogo) {
         // TODO: verificar condição de vitória
+        return "";
     }
 }

@@ -24,6 +24,8 @@ public abstract class Casa {
      *
      * @param jogador jogador que parou nesta casa
      * @param jogo    contexto da partida (acesso a outros jogadores, scanner, etc.)
+     * @return mensagem descrevendo o que aconteceu (exibida como último evento
+     *         da rodada); {@code ""} quando a casa não tem efeito a relatar
      */
-    public abstract void aplicarEfeito(Jogador jogador, Jogo jogo);
+    public abstract String aplicarEfeito(Jogador jogador, Jogo jogo);
 }

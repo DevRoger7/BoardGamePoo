@@ -11,7 +11,8 @@ public class CasaSurpresa extends Casa {
     }
 
     @Override
-    public void aplicarEfeito(Jogador jogador, Jogo jogo) {
+    public String aplicarEfeito(Jogador jogador, Jogo jogo) {
         // TODO: sortear uma Carta e trocar o tipo do jogador de acordo com ela
+        return "";
     }
 }
