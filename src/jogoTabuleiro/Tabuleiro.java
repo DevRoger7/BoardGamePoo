@@ -64,8 +64,9 @@ public class Tabuleiro {
      * Retorna a casa correspondente ao número informado (consulta, sem efeito colateral).
      */
     public Casa getCasa(int numero) {
-        // TODO: retornar a casa correspondente ao número (query, sem efeito colateral)
-        return null;
+        // as casas são numeradas a partir de 1; a lista é indexada a partir de 0
+        return casas.get(numero - 1);
+        // Depois, analisar Out of Bounds (index inexistente)
     }
 
     public int getTotalCasas() {
