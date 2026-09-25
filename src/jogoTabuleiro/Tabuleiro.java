@@ -24,7 +24,7 @@ public class Tabuleiro {
     private List<Casa> montarCasas() {
         List<Casa> lista = new ArrayList<>();
         for (int i = 0; i < totalCasas; i++) {
-            int numeroCasa = i + 1;
+            int numeroCasa = i;
             Casa casa;
             switch (numeroCasa) {
                 case 10:
