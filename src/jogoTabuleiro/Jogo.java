@@ -16,6 +16,7 @@ public class Jogo {
     private final Dado dado;
     private final Scanner scanner;
     private final boolean modoDebug;
+    private int rodada;
 
     public Jogo(Tabuleiro tabuleiro, List<Jogador> jogadores, Scanner scanner, boolean modoDebug) {
         this.tabuleiro = tabuleiro;
@@ -38,11 +39,53 @@ public class Jogo {
      * aplica o efeito da casa e trata o duplo (joga de novo).
      */
     private void executarTurno(Jogador jogador) {
-        // TODO: pular turno se perdeProximaRodada; exibir posições;
-        // obter movimento (rolarDados ou entrada manual em modoDebug);
-        // mover jogador; aplicar efeito da casa (String evento = casa.aplicarEfeito(jogador, this));
-        // tabuleiro.imprimirTela(jogadores, rodada, jogador, evento); pausarParaContinuar();
-        // tratar duplo (jogar de novo)
+        // a instância em `jogadores` pode ser substituída pela casa surpresa,
+        // então o jogador é sempre relido da lista pelo índice
+        int indice = jogadores.indexOf(jogador);
+        boolean repetir;
+
+        do {
+            repetir = false;
+            Jogador atual = jogadores.get(indice);
+
+            if (atual.isPerdeProximaRodada()) {
+                atual.setPerdeProximaRodada(false);
+                tabuleiro.imprimirTela(jogadores, rodada, atual, atual.getNome() + " perdeu a vez nesta rodada.");
+                pausarParaContinuar();
+                return;
+            }
+
+            mostrarPosicoes();
+
+            Lance lance;
+            if (modoDebug) {
+                System.out.print(" [DEBUG] Valor do dado 1 (1-6): ");
+                int dado1 = Integer.parseInt(scanner.nextLine().trim());
+                System.out.print(" [DEBUG] Valor do dado 2 (1-6): ");
+                int dado2 = Integer.parseInt(scanner.nextLine().trim());
+                lance = new Lance(dado1, dado2);
+            } else {
+                lance = atual.rolarDados(dado);
+            }
+
+            moverJogador(atual, lance.soma());
+            atual.registrarJogada();
+
+            Casa casa = tabuleiro.getCasa(atual.getPosicao());
+            String evento = casa.aplicarEfeito(atual, this);
+
+            // a casa pode ter trocado o tipo do jogador: `atual` pode estar obsoleto
+            atual = jogadores.get(indice);
+
+            tabuleiro.imprimirTela(jogadores, rodada, atual, evento);
+            pausarParaContinuar();
+
+            if (existeVencedor()) {
+                return;
+            }
+
+            repetir = lance.isDuplo();
+        } while (repetir);
     }
 
     /**
