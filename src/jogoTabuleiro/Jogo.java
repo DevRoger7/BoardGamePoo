@@ -60,21 +60,35 @@ public class Jogo {
      * Atualiza a posição do jogador (command).
      */
     private void moverJogador(Jogador jogador, int casas) {
-        // TODO: atualizar posicao (command)
+        int novaPosicao = Math.min(jogador.getPosicao() + casas, CASA_FINAL);
+        jogador.setPosicao(novaPosicao);
     }
 
     /**
      * Imprime a cor e a posição de cada jogador.
      */
     private void mostrarPosicoes() {
-        // TODO: imprimir cor + posição de cada jogador
+        StringBuilder linha = new StringBuilder();
+        for (Jogador jogador : jogadores) {
+            if (linha.length() > 0) {
+                linha.append(", ");
+            }
+            String cor = jogador.getCor();
+            String corCapitalizada = cor.substring(0, 1).toUpperCase() + cor.substring(1);
+            linha.append(corCapitalizada).append(" na casa ").append(jogador.getPosicao());
+        }
+        System.out.println(linha);
     }
 
     /**
      * Consulta se algum jogador alcançou ou ultrapassou {@link #CASA_FINAL}.
      */
     private boolean existeVencedor() {
-        // TODO: query — algum jogador alcançou ou passou CASA_FINAL?
+        for (Jogador jogador : jogadores) {
+            if (jogador.getPosicao() >= CASA_FINAL) {
+                return true;
+            }
+        }
         return false;
     }
 

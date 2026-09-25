@@ -6,10 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="b9c61fce-c8a6-45cf-96bc-251757c93e22" name="Changes" comment="add logic cardPlayer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Jogador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Jogador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/JogadorAzarado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/JogadorAzarado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/JogadorNormal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/JogadorNormal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/JogadorSortudo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/JogadorSortudo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Carta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Carta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/CasaSurpresa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/CasaSurpresa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/CheckpointCasas.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Jogador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Jogador.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/JogadorAzarado.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/JogadorAzarado.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/JogadorNormal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/JogadorNormal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/JogadorSortudo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/JogadorSortudo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Jogo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Jogo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Jogo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Jogo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
