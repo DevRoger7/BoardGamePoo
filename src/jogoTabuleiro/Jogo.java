@@ -2,6 +2,7 @@ package jogoTabuleiro;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  * Controla o fluxo da partida: rodadas, turnos, movimentação dos jogadores
@@ -30,7 +31,17 @@ public class Jogo {
      * Loop principal de rodadas, executado até existir um vencedor.
      */
     public void iniciar() {
-        // TODO: loop principal de rodadas até existir um vencedor
+        rodada = 0;
+        while (!existeVencedor()) {
+            rodada++;
+            for (Jogador jogador : jogadores) {
+                executarTurno(jogador);
+                if (existeVencedor()) {
+                    break;
+                }
+            }
+        }
+        mostrarResultadoFinal();
     }
 
     /**
@@ -50,7 +61,7 @@ public class Jogo {
 
             if (atual.isPerdeProximaRodada()) {
                 atual.setPerdeProximaRodada(false);
-                tabuleiro.imprimirTela(jogadores, rodada, atual, atual.getNome() + " perdeu a vez nesta rodada.");
+                tabuleiro.imprimirTela(jogadores,  rodada, atual, atual.getNome() + " perdeu a vez nesta rodada.");
                 pausarParaContinuar();
                 return;
             }
@@ -139,7 +150,21 @@ public class Jogo {
      * Exibe o resultado final: vencedor, jogadas de cada um e posição final de todos.
      */
     private void mostrarResultadoFinal() {
-        // TODO: vencedor, jogadas de cada um, posição final de todos
+        List<Jogador> ordenados = new ArrayList<>(jogadores);
+        ordenados.sort((a, b) -> Integer.compare(b.getPosicao(), a.getPosicao()));
+
+        Jogador vencedor = ordenados.get(0);
+
+        System.out.println("=== FIM DE JOGO ===");
+        System.out.println("Vencedor: " + vencedor.getNome()
+                + " (" + vencedor.getQuantidadeJogadas() + " jogadas)");
+        System.out.println();
+        System.out.println("Posicao final de todos:");
+        for (Jogador jogador : ordenados) {
+            System.out.println(jogador.getNome()
+                    + " - casa " + jogador.getPosicao()
+                    + " - " + jogador.getQuantidadeJogadas() + " jogadas");
+        }
     }
 
     public List<Jogador> getJogadores() {
