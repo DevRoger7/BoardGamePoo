@@ -89,6 +89,19 @@ public class Jogo {
         return jogadores;
     }
 
+    /**
+     * Substitui um jogador na lista por outro, preservando a posição dele
+     * na ordem de turnos. Usado pela casa surpresa quando o jogador muda de
+     * tipo (o objeto antigo não pode ter seu tipo alterado in-place, já que
+     * o tipo é definido pela subclasse concreta).
+     */
+    public void substituirJogador(Jogador antigo, Jogador novo) {
+        int indice = jogadores.indexOf(antigo);
+        if (indice != -1) {
+            jogadores.set(indice, novo);
+        }
+    }
+
     public Scanner getScanner() {
         return scanner;
     }

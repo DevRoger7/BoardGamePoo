@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9c61fce-c8a6-45cf-96bc-251757c93e22" name="Changes" comment="." />
+    <list default="true" id="b9c61fce-c8a6-45cf-96bc-251757c93e22" name="Changes" comment=".">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Carta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Carta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/CasaSurpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/CasaSurpresa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Jogador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Jogador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Jogo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Jogo.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,12 +30,12 @@
     &quot;assignee&quot;: &quot;italogadelha16&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/DevRoger7/BoardGamePoo.git",
-    "accountId": "e9e1c033-281e-4898-b3ad-b0ca7ff3ced6"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DevRoger7/BoardGamePoo.git&quot;,
+    &quot;accountId&quot;: &quot;e9e1c033-281e-4898-b3ad-b0ca7ff3ced6&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4,
   &quot;fromUser&quot;: false
@@ -44,6 +50,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.CheckpointCasas.executor": "Run",
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
