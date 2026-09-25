@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9c61fce-c8a6-45cf-96bc-251757c93e22" name="Changes" comment=".">
+    <list default="true" id="b9c61fce-c8a6-45cf-96bc-251757c93e22" name="Changes" comment="add logic cardPlayer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Carta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Carta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/CasaSurpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/CasaSurpresa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Jogador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Jogador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Jogo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Jogo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/JogadorAzarado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/JogadorAzarado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/JogadorNormal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/JogadorNormal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/JogadorSortudo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/JogadorSortudo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +90,15 @@
       <option name="project" value="LOCAL" />
       <updated>1790262836685</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add logic cardPlayer">
+      <option name="closed" value="true" />
+      <created>1790344359088</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1790344359088</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,6 +119,7 @@
     <MESSAGE value="implementação do jogador azarado" />
     <MESSAGE value="Implementation of `montarCasas` + creation of `CasaChegada` to check for victory conditions." />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="add logic cardPlayer" />
+    <option name="LAST_COMMIT_MESSAGE" value="add logic cardPlayer" />
   </component>
 </project>

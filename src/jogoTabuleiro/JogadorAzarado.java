@@ -9,6 +9,10 @@ public class JogadorAzarado extends Jogador {
         super(nome, cor);
     }
 
+    public JogadorAzarado(String nome, String cor, int posicao, int quantidadeJogadas, boolean perdeProximaRodada) {
+        super(nome, cor, posicao, quantidadeJogadas, perdeProximaRodada);
+    }
+
     @Override
     public Lance rolarDados(Dado dado) {
         Lance lance;

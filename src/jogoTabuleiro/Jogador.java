@@ -21,6 +21,14 @@ public abstract class Jogador {
         this.perdeProximaRodada = false;
     }
 
+    protected Jogador(String nome, String cor, int posicao, int quantidadeJogadas, boolean perdeProximaRodada) {
+        this.nome = nome;
+        this.cor = cor;
+        this.posicao = posicao;
+        this.quantidadeJogadas = quantidadeJogadas;
+        this.perdeProximaRodada = perdeProximaRodada;
+    }
+
     /**
      * Realiza o lançamento dos dados respeitando a restrição de soma
      * própria do tipo de jogador (sortudo, azarado ou normal).
@@ -76,16 +84,10 @@ public abstract class Jogador {
      * {@link Jogo#substituirJogador}; o objeto antigo é descartado.
      */
     public static Jogador criarComNovoTipo(Jogador antigo, TipoJogador novoTipo) {
-        Jogador novo = switch (novoTipo) {
-            case SORTUDO -> new JogadorSortudo(antigo.getNome(), antigo.getCor());
-            case AZARADO -> new JogadorAzarado(antigo.getNome(), antigo.getCor());
-            case NORMAL -> new JogadorNormal(antigo.getNome(), antigo.getCor());
+        return switch (novoTipo) {
+            case SORTUDO -> new JogadorSortudo(antigo.getNome(), antigo.getCor(), antigo.getPosicao(), antigo.getQuantidadeJogadas(), antigo.isPerdeProximaRodada());
+            case AZARADO -> new JogadorAzarado(antigo.getNome(), antigo.getCor(), antigo.getPosicao(), antigo.getQuantidadeJogadas(), antigo.isPerdeProximaRodada());
+            case NORMAL -> new JogadorNormal(antigo.getNome(), antigo.getCor(), antigo.getPosicao(), antigo.getQuantidadeJogadas(), antigo.isPerdeProximaRodada());
         };
-        novo.setPosicao(antigo.getPosicao());
-        novo.setPerdeProximaRodada(antigo.isPerdeProximaRodada());
-        for (int i = 0; i < antigo.getQuantidadeJogadas(); i++) {
-            novo.registrarJogada();
-        }
-        return novo;
     }
 }
