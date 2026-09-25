@@ -6,15 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b9c61fce-c8a6-45cf-96bc-251757c93e22" name="Changes" comment="add logic cardPlayer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Jogo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Jogo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Tabuleiro$TipoCasaVisual.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Tabuleiro$TipoCasaVisual.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Tabuleiro.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Tabuleiro.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/CasaMagica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/CasaMagica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/CasaVoltarInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/CasaVoltarInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Jogo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Jogo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Tabuleiro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Tabuleiro.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,12 +28,12 @@
     &quot;assignee&quot;: &quot;italogadelha16&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/DevRoger7/BoardGamePoo.git&quot;,
-    &quot;accountId&quot;: &quot;e9e1c033-281e-4898-b3ad-b0ca7ff3ced6&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/DevRoger7/BoardGamePoo.git",
+    "accountId": "3191ea76-5035-4288-9fbe-be62ac6fb418"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4,
   &quot;fromUser&quot;: false
@@ -74,8 +67,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.25134.95" />
-        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.25134.95" />
+        <option value="bundled-jdk-30f59d01ecdd-63390994e64e-intellij.indexing.shared.core-IU-262.8665.337" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.8665.337" />
       </set>
     </attachedChunks>
   </component>

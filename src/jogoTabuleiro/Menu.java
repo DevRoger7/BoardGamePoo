@@ -34,8 +34,8 @@ public class Menu {
 
             switch (opcao) {
                 case 1 -> iniciarJogo();
-                case 0 -> System.out.println(COR_DIM + "Ate a proxima!" + ConsoleUI.RESET);
-                default -> System.out.println(COR_DIM + "Opcao invalida." + ConsoleUI.RESET);
+                case 0 -> System.out.println(COR_DIM + "Até a próxima!" + ConsoleUI.RESET);
+                default -> System.out.println(COR_DIM + "Opção inválida." + ConsoleUI.RESET);
             }
         } while (opcao != 0);
     }
@@ -97,9 +97,10 @@ public class Menu {
             linhas.add("");
             ConsoleUI.imprimirTela(linhas);
 
-            System.out.print(" Nome: ");
-            String nome = scanner.nextLine();
-            String cor = lerCor();
+            List<String> nomesUsados = dados.stream().map(NomeCor::nome).toList();
+            String nome = lerNome(nomesUsados);
+            List<String> coresUsadas = dados.stream().map(NomeCor::cor).toList();
+            String cor = lerCor(coresUsadas);
             dados.add(new NomeCor(nome, cor));
         }
 
@@ -144,23 +145,78 @@ public class Menu {
      * Pede a cor do jogador como número de uma lista fechada ({@link CorJogador}),
      * em vez de texto livre — evita cores digitadas de forma diferente da
      * esperada por {@link Tabuleiro#imprimirTela} (typo, acento, maiusculas)
-     * caírem no fallback branco silenciosamente. Repete o prompt até um
-     * numero valido ser escolhido.
+     * caírem no fallback branco silenciosamente. Cores em {@code coresUsadas}
+     * aparecem marcadas como já escolhidas e são recusadas. Repete o prompt até
+     * um numero valido de uma cor livre ser escolhido.
      */
-    private String lerCor() {
+    private String lerCor(List<String> coresUsadas) {
         CorJogador[] cores = CorJogador.values();
         while (true) {
             System.out.println(" Cor:");
             for (int i = 0; i < cores.length; i++) {
-                System.out.println("   " + (i + 1) + " - " + cores[i].getNomeExibicao());
+                if (corJaUsada(cores[i].getNome(), coresUsadas)) {
+                    System.out.println(COR_DIM + "   " + (i + 1) + " - " + cores[i].getNomeExibicao()
+                            + " (já escolhida)" + ConsoleUI.RESET);
+                } else {
+                    System.out.println("   " + (i + 1) + " - " + cores[i].getNomeExibicao());
+                }
             }
             System.out.print(" Escolha o numero da cor: ");
             int escolha = lerInteiro();
-            if (escolha >= 1 && escolha <= cores.length) {
-                return cores[escolha - 1].getNome();
+            if (escolha < 1 || escolha > cores.length) {
+                System.out.println(COR_DIM + "Opcao invalida. Escolha um numero entre 1 e " + cores.length + "." + ConsoleUI.RESET);
+                continue;
             }
-            System.out.println(COR_DIM + "Opcao invalida. Escolha um numero entre 1 e " + cores.length + "." + ConsoleUI.RESET);
+            String cor = cores[escolha - 1].getNome();
+            if (corJaUsada(cor, coresUsadas)) {
+                System.out.println(COR_DIM + "Cor já escolhida por outro jogador. Escolha outra." + ConsoleUI.RESET);
+                continue;
+            }
+            return cor;
         }
+    }
+
+    /**
+     * Pede o nome do jogador, recusando nomes já presentes em {@code nomesUsados}
+     * e repetindo o prompt até um nome livre ser digitado.
+     */
+    private String lerNome(List<String> nomesUsados) {
+        while (true) {
+            System.out.print(" Nome: ");
+            String nome = scanner.nextLine();
+            if (!nomeJaUsado(nome, nomesUsados)) {
+                return nome;
+            }
+            System.out.println(COR_DIM + "Nome já cadastrado por outro jogador. Escolha outro nome." + ConsoleUI.RESET);
+        }
+    }
+
+    /** Indica se {@code nome} já está em {@code nomesUsados}, ignorando maiúsculas/minúsculas e espaços nas pontas. */
+    static boolean nomeJaUsado(String nome, List<String> nomesUsados) {
+        if (nome == null) {
+            return false;
+        }
+        String normalizado = nome.trim();
+        for (String usado : nomesUsados) {
+            if (usado != null && usado.trim().equalsIgnoreCase(normalizado)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /** Indica se {@code cor} já está em {@code coresUsadas}, ignorando maiúsculas/minúsculas e espaços nas pontas. */
+    static boolean corJaUsada(String cor, List<String> coresUsadas) {
+        if (cor == null) {
+            return false;
+        }
+        String normalizada = cor.trim();
+        for (String usada : coresUsadas) {
+            if (usada != null && usada.trim().equalsIgnoreCase(normalizada)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /** Bolinha colorida ("●") na cor do jogador, para identificação visual rápida na lista de sorteio. */
