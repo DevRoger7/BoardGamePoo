@@ -4,28 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9c61fce-c8a6-45cf-96bc-251757c93e22" name="Changes" comment="Implementation of Tabuleiro.getCasa + aplicarEfeito in CasaVoltarInicio and CasaMagica">
-      <change afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/ConsoleUI.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Menu$NomeCor.class" afterDir="false" />
+    <list default="true" id="b9c61fce-c8a6-45cf-96bc-251757c93e22" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Casa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Casa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/CasaChegada.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/CasaChegada.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/CasaEspera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/CasaEspera.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/CasaMagica.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/CasaMagica.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/CasaNormal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/CasaNormal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/CasaSorte.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/CasaSorte.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/CasaSurpresa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/CasaSurpresa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/CasaVoltarInicio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/CasaVoltarInicio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Jogador.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Jogador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/JogadorAzarado.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/JogadorAzarado.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Jogo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Jogo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Tabuleiro.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Tabuleiro.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/CasaMagica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/CasaMagica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/CasaVoltarInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/CasaVoltarInicio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Tabuleiro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Tabuleiro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Carta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Carta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/CasaSurpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/CasaSurpresa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Jogador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Jogador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Jogo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Jogo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +33,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/DevRoger7/BoardGamePoo.git&quot;,
-    &quot;accountId&quot;: &quot;3191ea76-5035-4288-9fbe-be62ac6fb418&quot;
+    &quot;accountId&quot;: &quot;e9e1c033-281e-4898-b3ad-b0ca7ff3ced6&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -66,14 +50,17 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.CheckpointCasas.executor": "Run",
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "Italo",
+    "git-widget-placeholder": "main",
     "git.auto.fetch.suggestion.counter": "1",
     "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
@@ -82,8 +69,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-63390994e64e-intellij.indexing.shared.core-IU-262.8665.337" />
-        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.8665.337" />
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.25134.95" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.25134.95" />
       </set>
     </attachedChunks>
   </component>
@@ -124,7 +111,6 @@
     <MESSAGE value="implementação do jogador azarado" />
     <MESSAGE value="Implementation of `montarCasas` + creation of `CasaChegada` to check for victory conditions." />
     <MESSAGE value="." />
-    <MESSAGE value="Implementation of Tabuleiro.getCasa + aplicarEfeito in CasaVoltarInicio and CasaMagica" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementation of Tabuleiro.getCasa + aplicarEfeito in CasaVoltarInicio and CasaMagica" />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>

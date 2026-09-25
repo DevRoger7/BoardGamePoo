@@ -67,4 +67,25 @@ public abstract class Jogador {
     public void setPerdeProximaRodada(boolean perdeProximaRodada) {
         this.perdeProximaRodada = perdeProximaRodada;
     }
+
+    /**
+     * Cria uma nova instância de Jogador do tipo indicado, preservando nome,
+     * cor, posição, quantidade de jogadas e status de perdeProximaRodada do
+     * jogador original. Usado pela casa surpresa (13) quando o jogador muda
+     * de tipo — a lista de jogadores em {@link Jogo} é atualizada via
+     * {@link Jogo#substituirJogador}; o objeto antigo é descartado.
+     */
+    public static Jogador criarComNovoTipo(Jogador antigo, TipoJogador novoTipo) {
+        Jogador novo = switch (novoTipo) {
+            case SORTUDO -> new JogadorSortudo(antigo.getNome(), antigo.getCor());
+            case AZARADO -> new JogadorAzarado(antigo.getNome(), antigo.getCor());
+            case NORMAL -> new JogadorNormal(antigo.getNome(), antigo.getCor());
+        };
+        novo.setPosicao(antigo.getPosicao());
+        novo.setPerdeProximaRodada(antigo.isPerdeProximaRodada());
+        for (int i = 0; i < antigo.getQuantidadeJogadas(); i++) {
+            novo.registrarJogada();
+        }
+        return novo;
+    }
 }

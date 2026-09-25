@@ -12,7 +12,10 @@ public class CasaSurpresa extends Casa {
 
     @Override
     public String aplicarEfeito(Jogador jogador, Jogo jogo) {
-        // TODO: sortear uma Carta e trocar o tipo do jogador de acordo com ela
-        return "";
+        Carta carta = Carta.sortear();
+        TipoJogador novoTipo = carta.getTipo();
+        Jogador novoJogador = Jogador.criarComNovoTipo(jogador, novoTipo);
+        jogo.substituirJogador(jogador, novoJogador);
+        return jogador.getNome() + " caiu na casa surpresa e virou jogador " + novoTipo + "!";
     }
 }
