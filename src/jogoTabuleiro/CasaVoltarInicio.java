@@ -26,6 +26,7 @@ public class CasaVoltarInicio extends Casa {
             return "";
         }
 
+        System.out.println();
         System.out.println(jogador.getNome() + " caiu na casa " + getNumero()
                 + "! Escolha um concorrente para voltar ao início:");
         for (int i = 0; i < concorrentes.size(); i++) {

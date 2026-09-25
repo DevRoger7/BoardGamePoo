@@ -32,6 +32,8 @@ public class Jogo {
      */
     public void iniciar() {
         rodada = 0;
+        tabuleiro.imprimirTelaInicial(jogadores);
+        pausarParaContinuar();
         while (!existeVencedor()) {
             rodada++;
             for (Jogador jogador : jogadores) {
@@ -68,18 +70,15 @@ public class Jogo {
 
             mostrarPosicoes();
 
-            Lance lance;
             if (modoDebug) {
-                System.out.print(" [DEBUG] Valor do dado 1 (1-6): ");
-                int dado1 = Integer.parseInt(scanner.nextLine().trim());
-                System.out.print(" [DEBUG] Valor do dado 2 (1-6): ");
-                int dado2 = Integer.parseInt(scanner.nextLine().trim());
-                lance = new Lance(dado1, dado2);
+                int destino = lerCasaDebug(atual);
+                atual.setPosicao(destino);
+                repetir = false;
             } else {
-                lance = atual.rolarDados(dado);
+                Lance lance = atual.rolarDados(dado);
+                moverJogador(atual, lance.soma());
+                repetir = lance.isDuplo();
             }
-
-            moverJogador(atual, lance.soma());
             atual.registrarJogada();
 
             Casa casa = tabuleiro.getCasa(atual.getPosicao());
@@ -94,9 +93,31 @@ public class Jogo {
             if (existeVencedor()) {
                 return;
             }
-
-            repetir = lance.isDuplo();
         } while (repetir);
+    }
+
+    /**
+     * Le em modo debug a casa exata para a qual o jogador deve ir (em vez da
+     * soma dos dados) — permite testar o efeito de qualquer casa diretamente.
+     * Repete o prompt até um numero valido entre 1 e {@link #CASA_FINAL}
+     * (a casa 0 não existe no tabuleiro — {@link Tabuleiro#getCasa} indexa a
+     * partir de 1).
+     */
+    private int lerCasaDebug(Jogador jogador) {
+        while (true) {
+            System.out.print(" [DEBUG] " + jogador.getNome() + " esta na casa " + jogador.getPosicao()
+                    + ". Ir para qual casa (1-" + CASA_FINAL + ")? ");
+            String entrada = scanner.nextLine().trim();
+            try {
+                int casa = Integer.parseInt(entrada);
+                if (casa >= 1 && casa <= CASA_FINAL) {
+                    return casa;
+                }
+                System.out.println(" Casa invalida. Escolha um numero entre 1 e " + CASA_FINAL + ".");
+            } catch (NumberFormatException e) {
+                System.out.println(" Entrada invalida. Digite um numero entre 1 e " + CASA_FINAL + ".");
+            }
+        }
     }
 
     /**

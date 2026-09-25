@@ -29,8 +29,7 @@ public class CasaMagica extends Casa {
         int posicaoAntiga = jogador.getPosicao();
         jogador.setPosicao(maisAtras.getPosicao());
         maisAtras.setPosicao(posicaoAntiga);
-        System.out.println(jogador.getNome() + " caiu na casa mágica " + getNumero()
-                + " e trocou de lugar com " + maisAtras.getNome() + "!");
-        return "";
+        return jogador.getNome() + " caiu na casa mágica " + getNumero()
+                + " e trocou de lugar com " + maisAtras.getNome() + "!";
     }
 }

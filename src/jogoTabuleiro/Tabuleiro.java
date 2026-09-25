@@ -24,7 +24,11 @@ public class Tabuleiro {
     private List<Casa> montarCasas() {
         List<Casa> lista = new ArrayList<>();
         for (int i = 0; i < totalCasas; i++) {
-            int numeroCasa = i;
+            // as casas são numeradas a partir de 1 (ver getCasa), então o número
+            // real da casa é i + 1, não i — senão toda casa especial fica
+            // registrada uma posição antes da que getCasa() de fato devolve,
+            // e a casa 40 (chegada) nunca é criada (i nunca chega a 40)
+            int numeroCasa = i + 1;
             Casa casa;
             switch (numeroCasa) {
                 case 10:
@@ -118,9 +122,31 @@ public class Tabuleiro {
         linhas.add("");
         linhas.addAll(construirLinhasReferencia());
         linhas.add("");
-        linhas.addAll(construirLinhasStatus(rodada, daVez, jogadores));
+        String corDaVez = rgbJogador(daVez.getCor());
+        String cabecalho = ConsoleUI.NEGRITO + "=== RODADA " + rodada + " — vez de: " + ConsoleUI.RESET
+                + corDaVez + daVez.getNome() + ConsoleUI.RESET + ConsoleUI.NEGRITO + " ===" + ConsoleUI.RESET;
+        linhas.addAll(construirLinhasStatus(cabecalho, jogadores));
         linhas.add("");
         linhas.add(ultimoEvento);
+
+        ConsoleUI.imprimirMoldura(linhas);
+    }
+
+    /**
+     * Tela de pré-jogo: mostra o tabuleiro e a posição inicial de todos os
+     * jogadores antes da primeira rodada começar (para o usuário conferir o
+     * tabuleiro e quem vai jogar antes de a partida realmente iniciar).
+     */
+    public void imprimirTelaInicial(List<Jogador> jogadores) {
+        List<String> linhas = new ArrayList<>();
+        linhas.add("SIMULACAO DO TABULEIRO (" + totalCasas + " casas)");
+        linhas.add("");
+        linhas.addAll(construirLinhasReferencia());
+        linhas.add("");
+        String cabecalho = ConsoleUI.NEGRITO + "=== JOGADORES ===" + ConsoleUI.RESET;
+        linhas.addAll(construirLinhasStatus(cabecalho, jogadores));
+        linhas.add("");
+        linhas.add("Tudo pronto! Pressione Enter para comecar a Rodada 1.");
 
         ConsoleUI.imprimirMoldura(linhas);
     }
@@ -201,11 +227,9 @@ public class Tabuleiro {
 
     // ---- status da rodada (dinâmico: barras + evento) ----
 
-    private List<String> construirLinhasStatus(int rodada, Jogador daVez, List<Jogador> jogadores) {
+    private List<String> construirLinhasStatus(String cabecalho, List<Jogador> jogadores) {
         List<String> linhas = new ArrayList<>();
-        String corDaVez = rgbJogador(daVez.getCor());
-        linhas.add(ConsoleUI.NEGRITO + "=== RODADA " + rodada + " — vez de: " + ConsoleUI.RESET
-                + corDaVez + daVez.getNome() + ConsoleUI.RESET + ConsoleUI.NEGRITO + " ===" + ConsoleUI.RESET);
+        linhas.add(cabecalho);
         linhas.add("");
 
         StringBuilder legenda = new StringBuilder("Jogadores: ");
@@ -277,14 +301,12 @@ public class Tabuleiro {
         return TipoCasaVisual.NORMAL;
     }
 
+    /** Branco: fallback de exibição caso a cor salva não corresponda a nenhuma {@link CorJogador} conhecida. */
+    private static final String COR_DESCONHECIDA = ConsoleUI.cor(255, 255, 255);
+
     private static String rgbJogador(String nomeCor) {
-        return switch (nomeCor == null ? "" : nomeCor.trim().toLowerCase()) {
-            case "azul" -> ConsoleUI.cor(59, 130, 246);
-            case "verde" -> ConsoleUI.cor(34, 197, 94);
-            case "amarelo" -> ConsoleUI.cor(234, 179, 8);
-            case "roxo" -> ConsoleUI.cor(168, 85, 247);
-            default -> ConsoleUI.cor(255, 255, 255);
-        };
+        CorJogador cor = CorJogador.fromNome(nomeCor);
+        return cor != null ? cor.codigoAnsi() : COR_DESCONHECIDA;
     }
 
     private static String pad2(int numero) {

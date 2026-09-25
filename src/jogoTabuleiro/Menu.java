@@ -84,10 +84,11 @@ public class Menu {
     private record NomeCor(String nome, String cor) {
     }
 
+    private static final int MIN_JOGADORES = 2;
+    private static final int MAX_JOGADORES = 6;
+
     private List<Jogador> cadastrarJogadores() {
-        ConsoleUI.imprimirTela(cabecalho("CADASTRO DE JOGADORES"));
-        System.out.print(" Quantos jogadores? ");
-        int quantidade = lerInteiro();
+        int quantidade = lerQuantidadeJogadores();
 
         List<NomeCor> dados = new ArrayList<>();
         for (int i = 1; i <= quantidade; i++) {
@@ -98,21 +99,75 @@ public class Menu {
 
             System.out.print(" Nome: ");
             String nome = scanner.nextLine();
-            System.out.print(" Cor : ");
-            String cor = scanner.nextLine();
+            String cor = lerCor();
             dados.add(new NomeCor(nome, cor));
         }
 
         List<Jogador> jogadores = sortearJogadores(dados);
         List<String> resultado = cabecalho("TIPOS SORTEADOS");
         for (Jogador jogador : jogadores) {
-            resultado.add("   " + COR_DIM + "-" + ConsoleUI.RESET + " " + jogador.getNome()
+            resultado.add("   " + COR_DIM + "-" + ConsoleUI.RESET + " " + bolinhaCor(jogador) + " " + jogador.getNome()
                     + " " + COR_DIM + "->" + ConsoleUI.RESET + " "
                     + COR_ATIVO + jogador.getClass().getSimpleName() + ConsoleUI.RESET);
         }
         resultado.add("");
         ConsoleUI.imprimirTela(resultado);
         return jogadores;
+    }
+
+    /**
+     * Pede a quantidade de jogadores, repetindo o prompt até um valor entre
+     * {@link #MIN_JOGADORES} e {@link #MAX_JOGADORES} (regras do enunciado:
+     * máximo de 6 jogadores e pelo menos 2, para poder haver tipos diferentes).
+     */
+    private int lerQuantidadeJogadores() {
+        int quantidade;
+        while (true) {
+            ConsoleUI.imprimirTela(cabecalho("CADASTRO DE JOGADORES"));
+            System.out.print(" Quantos jogadores? (" + MIN_JOGADORES + "-" + MAX_JOGADORES + "): ");
+            quantidade = lerInteiro();
+            if (quantidade >= MIN_JOGADORES && quantidade <= MAX_JOGADORES) {
+                return quantidade;
+            }
+            System.out.println(COR_DIM + "Quantidade invalida. Escolha entre " + MIN_JOGADORES
+                    + " e " + MAX_JOGADORES + " jogadores." + ConsoleUI.RESET);
+            pausar();
+        }
+    }
+
+    private void pausar() {
+        System.out.print(" Pressione Enter para continuar...");
+        scanner.nextLine();
+    }
+
+    /**
+     * Pede a cor do jogador como número de uma lista fechada ({@link CorJogador}),
+     * em vez de texto livre — evita cores digitadas de forma diferente da
+     * esperada por {@link Tabuleiro#imprimirTela} (typo, acento, maiusculas)
+     * caírem no fallback branco silenciosamente. Repete o prompt até um
+     * numero valido ser escolhido.
+     */
+    private String lerCor() {
+        CorJogador[] cores = CorJogador.values();
+        while (true) {
+            System.out.println(" Cor:");
+            for (int i = 0; i < cores.length; i++) {
+                System.out.println("   " + (i + 1) + " - " + cores[i].getNomeExibicao());
+            }
+            System.out.print(" Escolha o numero da cor: ");
+            int escolha = lerInteiro();
+            if (escolha >= 1 && escolha <= cores.length) {
+                return cores[escolha - 1].getNome();
+            }
+            System.out.println(COR_DIM + "Opcao invalida. Escolha um numero entre 1 e " + cores.length + "." + ConsoleUI.RESET);
+        }
+    }
+
+    /** Bolinha colorida ("●") na cor do jogador, para identificação visual rápida na lista de sorteio. */
+    private String bolinhaCor(Jogador jogador) {
+        CorJogador cor = CorJogador.fromNome(jogador.getCor());
+        String codigoAnsi = cor != null ? cor.codigoAnsi() : COR_BRANCO;
+        return codigoAnsi + "●" + ConsoleUI.RESET;
     }
 
     /** Barra de progresso em blocos ASCII (■ concluído / □ restante), ex.: "[■ ■ □ □]". */

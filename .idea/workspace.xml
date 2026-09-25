@@ -6,7 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="b9c61fce-c8a6-45cf-96bc-251757c93e22" name="Changes" comment="add logic cardPlayer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Jogo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Jogo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Tabuleiro$TipoCasaVisual.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Tabuleiro$TipoCasaVisual.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Tabuleiro.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Tabuleiro.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/CasaMagica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/CasaMagica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/CasaVoltarInicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/CasaVoltarInicio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Jogo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Jogo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Tabuleiro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Tabuleiro.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
