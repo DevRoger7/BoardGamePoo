@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9c61fce-c8a6-45cf-96bc-251757c93e22" name="Changes" comment="add logic cardPlayer">
+    <list default="true" id="b9c61fce-c8a6-45cf-96bc-251757c93e22" name="Changes" comment="Change cadastrarJogador logic by denying that players have same user/color">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BoardGamePoo/jogoTabuleiro/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/CasaChegada.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogoTabuleiro/Tabuleiro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogoTabuleiro/Tabuleiro.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +28,12 @@
     &quot;assignee&quot;: &quot;italogadelha16&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/DevRoger7/BoardGamePoo.git",
-    "accountId": "3191ea76-5035-4288-9fbe-be62ac6fb418"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DevRoger7/BoardGamePoo.git&quot;,
+    &quot;accountId&quot;: &quot;3191ea76-5035-4288-9fbe-be62ac6fb418&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4,
   &quot;fromUser&quot;: false
@@ -118,6 +118,7 @@
     <MESSAGE value="Implementation of `montarCasas` + creation of `CasaChegada` to check for victory conditions." />
     <MESSAGE value="." />
     <MESSAGE value="add logic cardPlayer" />
-    <option name="LAST_COMMIT_MESSAGE" value="add logic cardPlayer" />
+    <MESSAGE value="Change cadastrarJogador logic by denying that players have same user/color" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change cadastrarJogador logic by denying that players have same user/color" />
   </component>
 </project>

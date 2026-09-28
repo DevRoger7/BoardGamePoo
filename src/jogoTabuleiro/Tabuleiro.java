@@ -52,9 +52,6 @@ public class Tabuleiro {
                 case 35:
                     casa = new CasaMagica(numeroCasa);
                     break;
-                case 40:
-                    casa = new CasaChegada(numeroCasa);
-                    break;
                 default:
                     casa = new CasaNormal(numeroCasa);
                     break;
@@ -71,10 +68,6 @@ public class Tabuleiro {
         // as casas são numeradas a partir de 1; a lista é indexada a partir de 0
         return casas.get(numero - 1);
         // Depois, analisar Out of Bounds (index inexistente)
-    }
-
-    public int getTotalCasas() {
-        return totalCasas;
     }
 
     // ==================================================================
