@@ -48,52 +48,45 @@ public class Jogo {
 
     /**
      * Executa o turno de um jogador: pula se ele perdeu a rodada, exibe posições,
-     * obtém o movimento (dados ou entrada manual em modo debug), move o jogador,
-     * aplica o efeito da casa e trata o duplo (joga de novo).
+     * obtém o movimento (dados ou entrada manual em modo debug), move o jogador
+     * (repetindo a jogada enquanto tirar duplo) e aplica o efeito da casa onde parou.
      */
     private void executarTurno(Jogador jogador) {
         // a instância em `jogadores` pode ser substituída pela casa surpresa,
         // então o jogador é sempre relido da lista pelo índice
         int indice = jogadores.indexOf(jogador);
-        boolean repetir;
+        Jogador atual = jogadores.get(indice);
 
-        do {
-            repetir = false;
-            Jogador atual = jogadores.get(indice);
-
-            if (atual.isPerdeProximaRodada()) {
-                atual.setPerdeProximaRodada(false);
-                tabuleiro.imprimirTela(jogadores,  rodada, atual, atual.getNome() + " perdeu a vez nesta rodada.");
-                pausarParaContinuar();
-                return;
-            }
-
-            mostrarPosicoes();
-
-            if (modoDebug) {
-                int destino = lerCasaDebug(atual);
-                atual.setPosicao(destino);
-                repetir = false;
-            } else {
-                Lance lance = atual.rolarDados(dado);
-                moverJogador(atual, lance.soma());
-                repetir = lance.isDuplo();
-            }
-            atual.registrarJogada();
-
-            Casa casa = tabuleiro.getCasa(atual.getPosicao());
-            String evento = casa.aplicarEfeito(atual, this);
-
-            // a casa pode ter trocado o tipo do jogador: `atual` pode estar obsoleto
-            atual = jogadores.get(indice);
-
-            tabuleiro.imprimirTela(jogadores, rodada, atual, evento);
+        if (atual.isPerdeProximaRodada()) {
+            atual.setPerdeProximaRodada(false);
+            tabuleiro.imprimirTela(jogadores, rodada, atual,
+                    atual.getNome() + " perdeu a vez nesta rodada.");
             pausarParaContinuar();
+            return;
+        }
 
-            if (existeVencedor()) {
-                return;
-            }
-        } while (repetir);
+        mostrarPosicoes();
+
+        if (modoDebug) {
+            atual.setPosicao(lerCasaDebug(atual));
+        } else {
+            Lance lance;
+            do {
+                lance = atual.rolarDados(dado);
+                moverJogador(atual, lance.soma());
+            } while (lance.isDuplo() && atual.getPosicao() < CASA_FINAL);
+        }
+        atual.registrarJogada();
+
+        // o efeito vale só para a casa onde o jogador parou
+        Casa casa = tabuleiro.getCasa(atual.getPosicao());
+        String evento = casa.aplicarEfeito(atual, this);
+
+        // a casa pode ter trocado o tipo do jogador: `atual` pode estar obsoleto
+        atual = jogadores.get(indice);
+
+        tabuleiro.imprimirTela(jogadores, rodada, atual, evento);
+        pausarParaContinuar();
     }
 
     /**
