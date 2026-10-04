@@ -18,6 +18,8 @@ public class Jogo {
     private final Scanner scanner;
     private final boolean modoDebug;
     private int rodada;
+    // avisos de vez perdida ainda não exibidos: saem na tela da próxima jogada de verdade
+    private final List<String> avisosPendentes = new ArrayList<>();
 
     public Jogo(Tabuleiro tabuleiro, List<Jogador> jogadores, Scanner scanner, boolean modoDebug) {
         this.tabuleiro = tabuleiro;
@@ -32,6 +34,7 @@ public class Jogo {
      */
     public void iniciar() {
         rodada = 0;
+        avisosPendentes.clear();
         tabuleiro.imprimirTelaInicial(jogadores);
         pausarParaContinuar();
         while (!existeVencedor()) {
@@ -44,12 +47,15 @@ public class Jogo {
             }
         }
         mostrarResultadoFinal();
+        // sem esta pausa o menu é redesenhado na hora e empurra o resultado pra fora da tela
+        pausar(" Pressione Enter para voltar ao menu...");
     }
 
     /**
-     * Executa o turno de um jogador: pula se ele perdeu a rodada, exibe posições,
-     * obtém o movimento (dados ou entrada manual em modo debug), move o jogador
-     * (repetindo a jogada enquanto tirar duplo) e aplica o efeito da casa onde parou.
+     * Executa o turno de um jogador: se ele perdeu a rodada, só registra o aviso
+     * (sem tela nem pausa); senão exibe posições, obtém o movimento (dados ou
+     * entrada manual em modo debug), move o jogador (repetindo a jogada enquanto
+     * tirar duplo), aplica o efeito da casa onde parou e mostra a tela da jogada.
      */
     private void executarTurno(Jogador jogador) {
         // a instância em `jogadores` pode ser substituída pela casa surpresa,
@@ -57,24 +63,33 @@ public class Jogo {
         int indice = jogadores.indexOf(jogador);
         Jogador atual = jogadores.get(indice);
 
+        // a vez perdida não ganha tela própria: como nada se mexe no tabuleiro,
+        // ela parecia um Enter que "não funcionou" seguido de outro jogador
+        // jogando duas vezes seguidas. O aviso sai junto da próxima jogada.
         if (atual.isPerdeProximaRodada()) {
             atual.setPerdeProximaRodada(false);
-            tabuleiro.imprimirTela(jogadores, rodada, atual,
-                    atual.getNome() + " perdeu a vez nesta rodada.");
-            pausarParaContinuar();
+            avisosPendentes.add(atual.getNome() + " perdeu a vez na rodada " + rodada + ".");
             return;
         }
 
         mostrarPosicoes();
 
+        int posicaoInicial = atual.getPosicao();
+        String movimento;
         if (modoDebug) {
             atual.setPosicao(lerCasaDebug(atual));
+            movimento = "[DEBUG] " + atual.getNome() + " foi da casa " + posicaoInicial
+                    + " para a casa " + atual.getPosicao() + ".";
         } else {
+            List<String> lances = new ArrayList<>();
             Lance lance;
             do {
                 lance = atual.rolarDados(dado);
+                lances.add(lance.dado1() + "+" + lance.dado2() + (lance.isDuplo() ? " (duplo)" : ""));
                 moverJogador(atual, lance.soma());
             } while (lance.isDuplo() && atual.getPosicao() < CASA_FINAL);
+            movimento = atual.getNome() + " tirou " + String.join(", ", lances)
+                    + " e foi da casa " + posicaoInicial + " para a casa " + atual.getPosicao() + ".";
         }
         atual.registrarJogada();
 
@@ -85,7 +100,13 @@ public class Jogo {
         // a casa pode ter trocado o tipo do jogador: `atual` pode estar obsoleto
         atual = jogadores.get(indice);
 
-        tabuleiro.imprimirTela(jogadores, rodada, atual, evento);
+        List<String> eventos = new ArrayList<>(avisosPendentes);
+        avisosPendentes.clear();
+        eventos.add(movimento);
+        if (!evento.isEmpty()) {
+            eventos.add(evento);
+        }
+        tabuleiro.imprimirTela(jogadores, rodada, atual, eventos);
         pausarParaContinuar();
     }
 
@@ -120,7 +141,11 @@ public class Jogo {
      * o mesmo console e cada tela é redesenhada do zero a cada turno).
      */
     private void pausarParaContinuar() {
-        System.out.print(" Pressione Enter para continuar...");
+        pausar(" Pressione Enter para continuar...");
+    }
+
+    private void pausar(String mensagem) {
+        System.out.print(mensagem);
         scanner.nextLine();
     }
 

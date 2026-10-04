@@ -108,8 +108,12 @@ public class Tabuleiro {
     private static final int[] COR_NUMERO_RGB = {75, 90, 82};
     private static final int[] COR_VAZIA_RGB = {48, 54, 61};
 
-    /** Limpa a tela e redesenha a grade de referência + status da rodada, tudo dentro de uma moldura só. */
-    public void imprimirTela(List<Jogador> jogadores, int rodada, Jogador daVez, String ultimoEvento) {
+    /**
+     * Limpa a tela e redesenha a grade de referência + status da rodada, tudo
+     * dentro de uma moldura só. Cada item de {@code eventos} vira uma linha
+     * no rodapé (avisos de vez perdida, dados tirados, efeito da casa).
+     */
+    public void imprimirTela(List<Jogador> jogadores, int rodada, Jogador daVez, List<String> eventos) {
         List<String> linhas = new ArrayList<>();
         linhas.add("SIMULACAO DO TABULEIRO (" + totalCasas + " casas)");
         linhas.add("");
@@ -120,7 +124,7 @@ public class Tabuleiro {
                 + corDaVez + daVez.getNome() + ConsoleUI.RESET + ConsoleUI.NEGRITO + " ===" + ConsoleUI.RESET;
         linhas.addAll(construirLinhasStatus(cabecalho, jogadores));
         linhas.add("");
-        linhas.add(ultimoEvento);
+        linhas.addAll(eventos);
 
         ConsoleUI.imprimirMoldura(linhas);
     }
